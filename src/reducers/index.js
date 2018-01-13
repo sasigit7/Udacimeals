@@ -12,32 +12,32 @@ const initialCalenderState = {
     monday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 }, 
     tuesday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 },
     wednesday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 },
     thursday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 },
     friday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 },
     saturday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 },
 }
 
