@@ -7,7 +7,7 @@ const initialCalenderState = {
     sunday: {
     breakfast: null,
     lunch: null,
-    dineer: null,
+    dinner: null,
 }, 
     monday: {
     breakfast: null,
