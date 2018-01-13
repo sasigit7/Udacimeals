@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addRecipe, removeFromCalender } from '../actions';
+import { addRecipe, removeFromCalendar } from '../actions';
 import { capitalize } from '../utils/helper';
 import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
 
@@ -10,14 +10,14 @@ class App extends Component {
 //        this.props.selectRecipe({})
 //    }
 //    state = {
-//        calender: null 
+//        calendar: null 
 //    }
 //    
 //    componentDidMount () {
 //        const { store } = this.props 
 //        store.subscribe(() => {
 //            this.setState(() => ({
-//                calender: store.getState()
+//                calendar: store.getState()
 //            }))
 //        })
 //    }
@@ -36,7 +36,7 @@ class App extends Component {
     render() {
         //console.log('Props', this.props);
         
-        const { calender, remove } = this.props;
+        const { calendar, remove } = this.props;
         const mealOrder = ['breakfast', 'lunch', 'dinner']
         
         return (
@@ -51,10 +51,10 @@ class App extends Component {
         
              <div className='calendar'>
           <div className='days'>
-              {calender.map(({ day }) => <h3 key={day} className='subheader'>{capitalize(day)}</h3>)}
+              {calendar.map(({ day }) => <h3 key={day} className='subheader'>{capitalize(day)}</h3>)}
            </div>
             <div className='icon-grid'>
-              {calender.map(({ day, meals }) => (
+              {calendar.map(({ day, meals }) => (
                 <ul key={day}>
                   {mealOrder.map((meal) => (
                     <li key={meal} className='meal'>
@@ -84,23 +84,23 @@ class App extends Component {
 //        <button onClick={this.submitFood}>Submit</button>   
 //        
 //        <pre>
-//            Monday's Breakfast: {this.state.calender && this.state.calender.monday.breakfast}
+//            Monday's Breakfast: {this.state.calendar && this.state.calendar.monday.breakfast}
 //            </pre>
            
     )
  }
 }
 
-function mapStateToProps ({ calender, food }) {
+function mapStateToProps ({ calendar, food }) {
     const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     
     return {
-        calender: dayOrder.map((day) => ({
+        calendar: dayOrder.map((day) => ({
             day,
-            meals: Object.keys(calender[day]).reduce(
+            meals: Object.keys(calendar[day]).reduce(
                 (meals, meal) => {
-                   meals[meal] = calender[day][meal] 
-                   ? food[calender[day][meal]] 
+                   meals[meal] = calendar[day][meal] 
+                   ? food[calendar[day][meal]] 
                    : null
                    
                    return meals
@@ -112,7 +112,7 @@ function mapStateToProps ({ calender, food }) {
 function mapDispatchToProps (dispatch) {
     return {
         selectRecipe: (data) => dispatch(addRecipe(data)),
-        remove: (data) => dispatch(removeFromCalender(data)),
+        remove: (data) => dispatch(removeFromCalendar(data)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
